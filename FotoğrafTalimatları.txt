@@ -1,0 +1,46 @@
+## Düğün Geri Sayımı Sayfası - Fotoğraf Ekleme Talimatları
+
+Merhaba Zeynep ve Erdem,
+
+Düğün geri sayım sayfanıza fotoğraf eklemek için aşağıdaki adımları izleyin:
+
+### 1. Fotoğraflarınızı Hazırlama
+- Düğün ya da nişan fotoğraflarınızı seçin 
+- İdeal olarak yatay (landscape) fotoğraflar tercih edin
+- Web için optimize edin (her fotoğraf 1MB'den küçük olursa ideal)
+- Dosya formatı: JPG veya PNG olmalı
+
+### 2. Kod İçerisinde Fotoğrafları Değiştirme
+"dugun-geri-sayim.html" dosyasında aşağıdaki bölümü bulun (yaklaşık 180-190. satırlar arası):
+
+```html
+<!-- Slayt gösterisi arka plan konteynerı -->
+<div id="slideshow-container" class="slideshow-container">
+    <!-- Fotoğraflar - kendi fotoğraflarınızla değiştirin -->
+    <!-- Not: Aşağıdaki örnekler, renk gradyanları kullanıyor, bunları kendi fotoğraflarınızla değiştirmelisiniz -->
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff9a9e, #fad0c4); opacity: 1;"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #a18cd1, #fbc2eb);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ffecd2, #fcb69f);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff758c, #ff7eb3);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #84fab0, #8fd3f4);"></div>
+```
+
+Bu bölümdeki her bir `<div class="slideshow-item">` satırını kendi fotoğraflarınızla değiştirin:
+
+```html
+<div class="slideshow-item" style="background-image: url('foto1.jpg'); opacity: 1;"></div>
+<div class="slideshow-item" style="background-image: url('foto2.jpg');"></div>
+<div class="slideshow-item" style="background-image: url('foto3.jpg');"></div>
+<!-- daha fazla fotoğraf ekleyebilirsiniz -->
+```
+
+### 3. Önemli Noktalar
+- Fotoğraf dosyalarınızı HTML dosyası ile aynı klasöre yükleyin
+- İlk fotoğrafın `opacity: 1;` değeri olmalı, diğerleri için bu değeri silmelisiniz
+- İsterseniz daha fazla veya daha az fotoğraf ekleyebilirsiniz
+- Fotoğraf dosyalarınızın adlarında Türkçe karakter kullanmamaya özen gösterin (ç, ş, ı, ğ, ü, ö gibi)
+
+### 4. Test Etme
+Değişiklikleri yaptıktan sonra sayfayı bir web tarayıcısında açarak kontrol edin. Fotoğrafların 5 saniyede bir değiştiğini göreceksiniz.
+
+İyi günler dileriz!

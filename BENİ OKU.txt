@@ -1,0 +1,64 @@
+# Düğün Geri Sayım Sayfası
+
+Sevgili Zeynep ve Erdem,
+
+Düğün geri sayım sayfanız hazır! Bu dosya size sayfayı nasıl kullanacağınızı ve kendi fotoğraflarınızı nasıl ekleyeceğinizi açıklar.
+
+## Dosyalar
+
+Bu klasörde şu dosyalar bulunmaktadır:
+- `index.html` - Ana düğün geri sayım sayfası
+- `dugun-geri-sayim.html` - Ana sayfanın bir kopyası (yedek)
+- `dugun-fotoları-icin-talimatlar.txt` - Fotoğraf ekleme ile ilgili detaylı talimatlar
+- `images/` klasörü - Fotoğraflarınızı buraya yükleyebilirsiniz
+
+## Fotoğraf Ekleme
+
+Kendi fotoğraflarınızı eklemek için:
+
+1. `images/` klasörüne fotoğraflarınızı yükleyin
+2. `index.html` dosyasını bir metin editörü ile açın
+3. Yaklaşık 180-190. satırlarda bulunan aşağıdaki bölümü bulun:
+
+```html
+<!-- Slayt gösterisi arka plan konteynerı -->
+<div id="slideshow-container" class="slideshow-container">
+    <!-- Fotoğraflar - kendi fotoğraflarınızla değiştirin -->
+    <!-- Not: Aşağıdaki örnekler, renk gradyanları kullanıyor, bunları kendi fotoğraflarınızla değiştirmelisiniz -->
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff9a9e, #fad0c4); opacity: 1;"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #a18cd1, #fbc2eb);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ffecd2, #fcb69f);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff758c, #ff7eb3);"></div>
+    <div class="slideshow-item" style="background-image: linear-gradient(45deg, #84fab0, #8fd3f4);"></div>
+```
+
+4. Bu bölümdeki satırları kendi fotoğraflarınızın dosya yollarıyla değiştirin:
+
+```html
+<div class="slideshow-item" style="background-image: url('images/foto1.jpg'); opacity: 1;"></div>
+<div class="slideshow-item" style="background-image: url('images/foto2.jpg');"></div>
+<div class="slideshow-item" style="background-image: url('images/foto3.jpg');"></div>
+<!-- daha fazla fotoğraf ekleyebilirsiniz -->
+```
+
+## Özelleştirme
+
+İsterseniz şu bölümleri de değiştirebilirsiniz:
+
+1. Başlık (Zeynep & Erdem)
+2. Tarih (varsayılan olarak 6 Temmuz 2025)
+3. Mesaj ("6 Temmuz 2025'te buluşuyoruz...")
+
+Tarih değiştirmek için, JavaScript bölümünde şu satırı bulun (yaklaşık 335. satır):
+
+```javascript
+const weddingDate = new Date('2025-07-06T14:30:00').getTime();
+```
+
+Bu tarihi kendi düğün tarihinizle değiştirin.
+
+## Kullanım
+
+Bu sayfayı herhangi bir web tarayıcısında açarak kullanabilirsiniz. Dosyaları bir web sunucusuna yüklerseniz, herkes bu sayfaya internet üzerinden erişebilir.
+
+Mutluluklar dileriz!
