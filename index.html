@@ -23,6 +23,8 @@
             position: relative;
             overflow: hidden;
         }
+
+        /* Slayt gösterisi arka plan stilleri */
         .slideshow-container {
             position: fixed;
             top: 0;
@@ -43,6 +45,7 @@
             transition: opacity 2s ease-in-out;
             opacity: 0;
         }
+
         .slideshow-overlay {
             position: absolute;
             top: 0;
@@ -52,6 +55,8 @@
             background: rgba(0, 0, 0, 0.3);
             z-index: 0;
         }
+
+        /* Yıldız animasyonu için stil */
         .stars {
             position: fixed;
             top: 0;
@@ -96,6 +101,7 @@
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 20px;
+            /* Başlık titreşim animasyonu */
             animation: titleVibration 3s infinite ease-in-out;
         }
 
@@ -124,7 +130,8 @@
             min-width: 100px;
         }
 
-       .time-box::after {
+        /* Zaman kutularına parlama animasyonu */
+        .time-box::after {
             content: '';
             position: absolute;
             top: -50%;
@@ -176,6 +183,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Responsive Ayarlamalar */
         @media (max-width: 600px) {
             .countdown {
                 gap: 10px;
@@ -201,18 +209,32 @@
     </style>
 </head>
 <body>
+    <!-- Slayt gösterisi arka plan konteynerı -->
     <div id="slideshow-container" class="slideshow-container">
-       <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff9a9e, #fad0c4); opacity: 1;"></div>
+
+        <div class="slideshow-item" style="background-image: url('images/01.jpg'); opacity: 1;"></div>
+        <div class="slideshow-item" style="background-image: url('images/02.jpg');"></div>
+        <div class="slideshow-item" style="background-image: url('images/03.jpg');"></div>
+        <div class="slideshow-item" style="background-image: url('images/04.jpg');"></div>
+        <div class="slideshow-item" style="background-image: url('images/05.jpg');"></div>
+
+        <!-- Fotoğraflar - kendi fotoğraflarınızla değiştirin -->
+        <!-- Not: Aşağıdaki örnekler, renk gradyanları kullanıyor, bunları kendi fotoğraflarınızla değiştirmelisiniz 
+        <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff9a9e, #fad0c4); opacity: 1;"></div>
         <div class="slideshow-item" style="background-image: linear-gradient(45deg, #a18cd1, #fbc2eb);"></div>
         <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ffecd2, #fcb69f);"></div>
         <div class="slideshow-item" style="background-image: linear-gradient(45deg, #ff758c, #ff7eb3);"></div>
         <div class="slideshow-item" style="background-image: linear-gradient(45deg, #84fab0, #8fd3f4);"></div>
-        
+        -->
+
+        <!-- Metin okunabilirliği için katman -->
         <div class="slideshow-overlay"></div>
     </div>
     
+    <!-- Yıldızlar için konteyner -->
     <div class="stars" id="stars"></div>
     
+    <!-- Ana geri sayım konteynerı -->
     <div class="container">
         <h1>Zeynep & Erdem <br> Kalan Süre</h1>
         <div class="countdown">
@@ -238,34 +260,52 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Slayt gösterisini başlat
             initSlideshow();
-             createStars();
-             updateCountdown();
+            
+            // Yıldızları oluştur
+            createStars();
+            
+            // Geri sayımı başlat
+            updateCountdown();
             const countdownInterval = setInterval(updateCountdown, 1000);
-           setInterval(triggerShimmer, 5000);
+            
+            // Zaman kutuları için parlama efekti
+            setInterval(triggerShimmer, 5000);
         });
 
+        /**
+         * Arka plan slayt gösterisini başlat
+         */
         function initSlideshow() {
             const slideshowContainer = document.getElementById('slideshow-container');
             const slideshowItems = document.querySelectorAll('.slideshow-item');
             let currentSlide = 0;
             
-           slideshowItems.forEach((slide, index) => {
+            // İlk slayt dışındaki tüm slaytları gizle
+            slideshowItems.forEach((slide, index) => {
                 if (index !== 0) {
                     slide.style.opacity = 0;
                 }
             });
             
+            // Her 5 saniyede bir slaytı değiştir
             setInterval(() => {
+                // Mevcut slaytı solgunlaştır
                 slideshowItems[currentSlide].style.opacity = 0;
                 
-               currentSlide = (currentSlide + 1) % slideshowItems.length;
+                // Slayt indeksini güncelle
+                currentSlide = (currentSlide + 1) % slideshowItems.length;
                 
-               slideshowItems[currentSlide].style.opacity = 1;
+                // Sonraki slaytı görünür yap
+                slideshowItems[currentSlide].style.opacity = 1;
             }, 5000);
         }
 
-       function createStars() {
+        /**
+         * Yıldızları oluşturma fonksiyonu
+         */
+        function createStars() {
             const starsContainer = document.getElementById('stars');
             const numberOfStars = 100;
             
@@ -273,17 +313,17 @@
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                
+                // Rastgele konum
                 const x = Math.random() * 100;
                 const y = Math.random() * 100;
                 
-                
+                // Rastgele boyut
                 const size = Math.random() * 3 + 1;
                 
-                
+                // Rastgele animasyon süresi
                 const duration = Math.random() * 5 + 3;
                 
-                
+                // Rastgele gecikme
                 const delay = Math.random() * 5;
                 
                 star.style.left = `${x}%`;
@@ -297,7 +337,9 @@
             }
         }
         
-        
+        /**
+         * Zaman kutuları için parlama efekti tetikleme
+         */
         function triggerShimmer() {
             const timeBoxes = document.querySelectorAll('.time-box');
             const randomBox = timeBoxes[Math.floor(Math.random() * timeBoxes.length)];
@@ -308,7 +350,9 @@
             }, 1500);
         }
 
-        
+        /**
+         * Düğün geri sayım zamanlayıcısı
+         */
         const weddingDate = new Date('2025-07-06T14:30:00').getTime();
         
         function updateCountdown() {
